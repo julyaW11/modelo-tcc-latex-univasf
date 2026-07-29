@@ -1,0 +1,133 @@
+\documentclass[12pt,a4paper]{report}
+
+% --- PACOTES BÁSICOS E CORES ------------
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+
+% Definido uma única vez com as margens ABNT corretas
+\usepackage[top=3cm, left=3cm, right=2cm, bottom=2cm, headsep=1.2cm]{geometry} 
+\usepackage{indentfirst} 
+\usepackage{setspace}     
+\onehalfspacing          
+\usepackage{mathptmx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{etoolbox}    
+\usepackage{titlesec}    
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[table]{xcolor} % Declarado apenas uma vez aqui
+\usepackage{array}
+\usepackage{caption}
+\setlength{\belowcaptionskip}{20pt}
+
+% --- CONFIGURAÇÃO DE CABEÇALHO E NUMERAÇÃO -------------------------------------
+\usepackage{fancyhdr}
+\setlength{\headheight}{14.5pt}
+\pagestyle{fancy}
+\fancyhf{} 
+\fancyhead[R]{\thepage} 
+\renewcommand{\headrulewidth}{0pt} 
+
+% Garante que inícios de capítulo normais usem o estilo fancy (número no topo)
+\patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
+
+% --- FORMATAÇÃO DE TÍTULOS (Capítulos e Seções) ---
+\titleformat{\chapter}[hang]
+{\normalfont\bfseries\normalsize}{\thechapter}{0.5em}{\MakeUppercase}
+\titlespacing*{\chapter}{0pt}{0pt}{1.5em}
+
+% Seção
+\titleformat{\section}
+{\normalfont\normalsize}{\thesection}{0.5em}{\MakeUppercase}
+\titlespacing*{\section}{0pt}{1.5em}{1em}
+
+% Subseção
+\titleformat{\subsection}
+{\normalfont\bfseries\normalsize}{\thesubsection}{0.5em}{}
+\titlespacing*{\subsection}{0pt}{1.5em}{1em}
+
+% --- Configurações de parágrafo ---
+\setlength{\parindent}{1.25cm} 
+\setlength{\parskip}{0pt}      
+\usepackage[titles]{tocloft}
+
+% Configuração da Bibliografia
+\usepackage{csquotes}
+\usepackage[style=abnt, backend=biber]{biblatex} 
+\addbibresource{referencias.bib}
+
+\usepackage{ragged2e} 
+
+% Para Fluxograma (Removidas as duplicatas de pacotes)
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, shapes.symbols}
+\definecolor{mygreen}{HTML}{C5F2C7}
+\usepackage{fontawesome5}
+\usepackage{enumitem}
+
+% --- INÍCIO DO DOCUMENTO -------------------------------------------
+\begin{document}
+
+% 1. CAPA (Não conta, não numera)
+\pagestyle{empty}
+\input{pretextual/capa}
+\clearpage
+
+% --- INÍCIO DA CONTAGEM (Folha de Rosto = Página 1) ---------------------------------
+\pagenumbering{arabic} 
+\pagestyle{empty} % Conta ocultamente
+
+% Folha de Rosto
+\input{pretextual/folhaderosto}
+\clearpage
+
+% Folha de Aprovação
+\input{pretextual/folhadeaprovacao}
+\clearpage
+
+% --- ELEMENTOS PRÉ-TEXTUAIS (Centralizados) --------------------------
+\titleformat{\chapter}[block]{\normalfont\bfseries\normalsize\filcenter}{}{0pt}{\MakeUppercase}
+
+\input{pretextual/epigrafe}
+\clearpage
+
+\input{agradecimentos}
+\clearpage
+
+\input{resumo}
+\clearpage
+
+\input{abstract}
+\clearpage
+
+\input{pretextual/ilustracoes}
+\clearpage
+
+\input{pretextual/tabelas}
+\clearpage
+
+\input{pretextual/abreviatura}
+\clearpage
+
+\tableofcontents
+\clearpage
+
+% --- INÍCIO DA PARTE TEXTUAL (Mostrar numeração no topo direito) ----------------------
+\pagestyle{fancy} 
+\titleformat{\chapter}[hang]{\normalfont\bfseries\normalsize}{\thechapter}{0.5em}{\MakeUppercase}
+
+\input{introducao}
+\input{trelacionados}
+\input{referencial}
+\input{metodos}
+\input{conclusao}
+
+% --- REFERÊNCIAS ---
+\titleformat{\chapter}[block]{\normalfont\bfseries\normalsize\filcenter}{}{0pt}{\MakeUppercase}
+\titlespacing*{\chapter}{0pt}{0pt}{1.5em}
+
+\RaggedRight 
+\printbibliography[title={REFERÊNCIAS}]
+
+\end{document}
