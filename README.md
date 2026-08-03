@@ -1,4 +1,4 @@
-# Template Latex para Trabalho de Conclusão de Curso - UNIVASF 🎓
+# Template Latex para Trabalho de Conclusão de Curso - UNIVASF 🎓 
 
 Este repositório contém o código-fonte em LaTeX exigido para o Trabalho de Conclusão de Curso (TCC) para o curso de graduação em **Engenharia da Computação** pela **Universidade Federal do Vale do São Francisco (UNIVASF)**.
 
