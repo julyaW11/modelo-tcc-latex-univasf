@@ -8,7 +8,7 @@ Este repositório contém o código-fonte em LaTeX exigido no Trabalho de Conclu
 ## 📝 Estruturação do Template:
 **imagens:** Pasta que deve conter todas as imagens utilizadas na monografia. Deixei um exemplo no arquivo de como importar uma imagem corretamente. 
 
-**pretextual:** Pasta que contém as folhas que antecedem o Sumário; pela norma ABNT, são folhas que não podem conter numeração. Escolhi colocá-las numa pasta, para além de organização, por serem elementos que são editados poucas vezes.  
+**pretextual:** Pasta que contém as folhas que antecedem o Sumário; pela norma ABNT, são folhas que não podem conter numeração.
 
 Arquivos como *introducao.tex, ....referencial.tex......etc* que são os arquivos que constituem o corpo de TCC, estes arquivos serão editados diversas vezes até que o TCC atinja sua versão final. Pensando na praticidade de se mover entre os capítulos durante a escrita, optei por deixar estes arquivos fora de qualquer pasta. Por este mesmo motivo, os arquivos: *resumo.tex , abstract.tex e agradecimentos.tex* , embora estejam antes do **Sumário** , como são arquivos que passam por sucessivas edições, foram posicionados fora de patas também.
 
