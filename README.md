@@ -10,7 +10,7 @@ Este repositório contém o código-fonte em LaTeX exigido no Trabalho de Conclu
 
 **pretextual:** Pasta que contém as folhas que antecedem o Sumário; pela norma ABNT, são folhas que não podem conter numeração.
 
-"Arquivos como *introducao.tex*,*referencial.tex*, *metodos.tex* e etc, que compõem o corpo do TCC, serão editados diversas vezes até a versão final. Para facilitar a troca entre os capítulos durante a escrita, optei por mantê-los na raiz do projeto, fora de pastas. Pelo mesmo motivo, os arquivos *resumo.tex*, *abstract.tex* e *agradecimentos.tex*,  que antecedem o **Sumário** mas, também passam por edições sucessivas, foram posicionados fora de pastas.
+Arquivos como *introducao.tex*,*referencial.tex*, *metodos.tex* e etc, que compõem o corpo do TCC, serão editados diversas vezes até a versão final. Para facilitar a troca entre os capítulos durante a escrita, optei por mantê-los na raiz do projeto, fora de pastas. Pelo mesmo motivo, os arquivos *resumo.tex*, *abstract.tex* e *agradecimentos.tex*,  que antecedem o **Sumário** mas, também passam por edições sucessivas, foram posicionados fora de pastas.
 
 *O Template está bastante legível. É possível baixar o repositório e reorganiza-lo sem muito esforço.* 
 
