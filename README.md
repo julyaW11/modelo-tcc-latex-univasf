@@ -6,7 +6,7 @@ Este repositório contém o código-fonte em LaTeX exigido no Trabalho de Conclu
 * **Julia Cardoso Reis**
 
 ## 📝 Estruturação do Template:
-**imagens:** Pasta que deve conter todas as imagens utilizadas na monografia. Deixei um exemplo no arquivo de como importar uma imagem corretamente. 
+**imagens:** Pasta que deve conter todas as imagens utilizadas na monografia. Há um exemplo no arquivo de como importar uma imagem corretamente. 
 
 **pretextual:** Pasta que contém as folhas que antecedem o Sumário; pela norma ABNT, são folhas que não podem conter numeração.
 
