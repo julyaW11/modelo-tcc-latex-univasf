@@ -1,121 +1,152 @@
 \documentclass[12pt,a4paper]{report}
 
-% --- PACOTES BÁSICOS E CORES ------------
+% =====================================================================
+% PACOTES BÁSICOS (idioma, margens, espaçamento e fonte)
+% =====================================================================
 \usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel}
 
-% Definido uma única vez com as margens ABNT corretas
-\usepackage[top=3cm, left=3cm, right=2cm, bottom=2cm, headsep=1.2cm]{geometry} 
-\usepackage{indentfirst} 
-\usepackage{setspace}     
-\onehalfspacing          
-\usepackage{mathptmx}
+% Margens ABNT: superior e esquerda 3 cm; inferior e direita 2 cm
+\usepackage[top=3cm, left=3cm, right=2cm, bottom=2cm, headsep=1.2cm]{geometry}
+\usepackage{indentfirst}   % recua também o primeiro parágrafo de cada seção
+\usepackage{setspace}
+\onehalfspacing            % espaçamento 1,5
+\usepackage{mathptmx}      % fonte Times
+
+% =====================================================================
+% MATEMÁTICA, FIGURAS, TABELAS E CORES
+% =====================================================================
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{etoolbox}    
-\usepackage{titlesec}    
+\usepackage{etoolbox}
 \usepackage{graphicx}
 \usepackage{float}
-\usepackage[table]{xcolor} % Declarado apenas uma vez aqui
+\usepackage[table]{xcolor}
 \usepackage{array}
 \usepackage{caption}
+\usepackage{booktabs} % linhas de tabela \toprule, \midrule, \bottomrule
 \setlength{\belowcaptionskip}{20pt}
 
-% --- CONFIGURAÇÃO DE CABEÇALHO E NUMERAÇÃO -------------------------------------
+% =====================================================================
+% CABEÇALHO E NUMERAÇÃO DE PÁGINAS
+% =====================================================================
 \usepackage{fancyhdr}
 \setlength{\headheight}{14.5pt}
 \pagestyle{fancy}
-\fancyhf{} 
-\fancyhead[R]{\thepage} 
-\renewcommand{\headrulewidth}{0pt} 
+\fancyhf{}
+\fancyhead[R]{\thepage}             % número no canto superior direito
+\renewcommand{\headrulewidth}{0pt}  % sem linha no cabeçalho
 
-% Garante que inícios de capítulo normais usem o estilo fancy (número no topo)
+% Faz a primeira página de cada capítulo também mostrar o número
 \patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
 
-% --- FORMATAÇÃO DE TÍTULOS (Capítulos e Seções) ---
-\titleformat{\chapter}[hang]
-{\normalfont\bfseries\normalsize}{\thechapter}{0.5em}{\MakeUppercase}
-\titlespacing*{\chapter}{0pt}{0pt}{1.5em}
-
-% Seção
-\titleformat{\section}
-{\normalfont\normalsize}{\thesection}{0.5em}{\MakeUppercase}
-\titlespacing*{\section}{0pt}{1.5em}{1em}
-
-% Subseção
-\titleformat{\subsection}
-{\normalfont\bfseries\normalsize}{\thesubsection}{0.5em}{}
-\titlespacing*{\subsection}{0pt}{1.5em}{1em}
-
-% --- Configurações de parágrafo ---
-\setlength{\parindent}{1.25cm} 
-\setlength{\parskip}{0pt}      
+% =====================================================================
+% FORMATAÇÃO DOS TÍTULOS
+% =====================================================================
+\usepackage{titlesec}
 \usepackage[titles]{tocloft}
 
-% Configuração da Bibliografia
+% Dois estilos de título de capítulo, usados em partes diferentes do TCC:
+%   \titulosnumerados     -> "1 INTRODUÇÃO" (negrito, maiúsculas, à esquerda)
+%   \tituloscentralizados -> "RESUMO", "REFERÊNCIAS" (negrito, maiúsculas, centralizado, sem número)
+\newcommand{\titulosnumerados}{%
+  \titleformat{\chapter}[hang]
+    {\normalfont\bfseries\normalsize}{\thechapter}{0.5em}{\MakeUppercase}}
+\newcommand{\tituloscentralizados}{%
+  \titleformat{\chapter}[block]
+    {\normalfont\bfseries\normalsize\filcenter}{}{0pt}{\MakeUppercase}}
+
+% Capítulo (estilo inicial: numerado)
+\titulosnumerados
+\titlespacing*{\chapter}{0pt}{0pt}{1.5em}
+
+% Seção: maiúsculas, sem negrito
+\titleformat{\section}
+  {\normalfont\normalsize}{\thesection}{0.5em}{\MakeUppercase}
+\titlespacing*{\section}{0pt}{1.5em}{1em}
+
+% Subseção: negrito, sem maiúsculas
+\titleformat{\subsection}
+  {\normalfont\bfseries\normalsize}{\thesubsection}{0.5em}{}
+\titlespacing*{\subsection}{0pt}{1.5em}{1em}
+
+% =====================================================================
+% PARÁGRAFOS E ALINHAMENTO
+% =====================================================================
+\setlength{\parindent}{1.25cm}  % recuo da primeira linha
+\setlength{\parskip}{0pt}       % sem espaço extra entre parágrafos
+\usepackage{ragged2e}
+
+% =====================================================================
+% BIBLIOGRAFIA (ABNT)
+% =====================================================================
 \usepackage{csquotes}
-\usepackage[style=abnt, backend=biber]{biblatex} 
+\usepackage[style=abnt, backend=biber]{biblatex}
 \addbibresource{referencias.bib}
 
-\usepackage{ragged2e} 
-
-% Para Fluxograma (Removidas as duplicatas de pacotes)
+% =====================================================================
+% FLUXOGRAMAS, ÍCONES E LISTAS
+% =====================================================================
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, shapes.symbols}
 \definecolor{mygreen}{HTML}{C5F2C7}
 \usepackage{fontawesome5}
 \usepackage{enumitem}
 
-% --- INÍCIO DO DOCUMENTO -------------------------------------------
-\begin{document}
 
-% 1. CAPA (Não conta, não numera)
+% #####################################################################
+\begin{document}
+% #####################################################################
+
+% ---------------------------------------------------------------------
+% CAPA (não conta e não mostra número)
+% ---------------------------------------------------------------------
 \pagestyle{empty}
 \input{pretextual/capa}
 \clearpage
 
-% --- INÍCIO DA CONTAGEM (Folha de Rosto = Página 1) ---------------------------------
-\pagenumbering{arabic} 
-\pagestyle{empty} % Conta ocultamente
+% ---------------------------------------------------------------------
+% A CONTAGEM COMEÇA AQUI: Folha de Rosto = página 1
+% As páginas são contadas, mas o número fica escondido.
+% ---------------------------------------------------------------------
+\pagenumbering{arabic}
+\pagestyle{empty}
 
-% Folha de Rosto
 \input{pretextual/folhaderosto}
 \clearpage
 
-% Folha de Aprovação
 \input{pretextual/folhadeaprovacao}
 \clearpage
 
-% --- ELEMENTOS PRÉ-TEXTUAIS (Centralizados) --------------------------
-\titleformat{\chapter}[block]{\normalfont\bfseries\normalsize\filcenter}{}{0pt}{\MakeUppercase}
+% ---------------------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS (títulos centralizados)
+% ---------------------------------------------------------------------
+\tituloscentralizados
+
 
 \input{pretextual/epigrafe}
 \clearpage
-
 \input{agradecimentos}
 \clearpage
-
 \input{resumo}
 \clearpage
-
 \input{abstract}
 \clearpage
-
 \input{pretextual/ilustracoes}
 \clearpage
-
 \input{pretextual/tabelas}
 \clearpage
-
 \input{pretextual/abreviatura}
 \clearpage
 
 \tableofcontents
 \clearpage
 
-% --- INÍCIO DA PARTE TEXTUAL (Mostrar numeração no topo direito) ----------------------
-\pagestyle{fancy} 
-\titleformat{\chapter}[hang]{\normalfont\bfseries\normalsize}{\thechapter}{0.5em}{\MakeUppercase}
+% ---------------------------------------------------------------------
+% PARTE TEXTUAL (número de página visível no canto superior direito)
+% ---------------------------------------------------------------------
+\pagestyle{fancy}
+\titulosnumerados
 
 \input{introducao}
 \input{trelacionados}
@@ -123,11 +154,11 @@
 \input{metodos}
 \input{conclusao}
 
-% --- REFERÊNCIAS ---
-\titleformat{\chapter}[block]{\normalfont\bfseries\normalsize\filcenter}{}{0pt}{\MakeUppercase}
-\titlespacing*{\chapter}{0pt}{0pt}{1.5em}
-
-\RaggedRight 
+% ---------------------------------------------------------------------
+% REFERÊNCIAS (título centralizado, texto alinhado à esquerda)
+% ---------------------------------------------------------------------
+\tituloscentralizados
+\RaggedRight
 \printbibliography[title={REFERÊNCIAS}]
 
 \end{document}
